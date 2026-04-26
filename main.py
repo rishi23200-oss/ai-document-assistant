@@ -4,7 +4,6 @@ from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from fastapi.middleware.cors import CORSMiddleware
-import whisper
 import shutil
 import os
 import warnings
@@ -117,9 +116,7 @@ async def ask_question(question: str = Form(...)):
     
     
     
-# -------- Audio Upload --------
-model = whisper.load_model("base")
-
+# -------- Audio Upload -------
 @app.post("/upload-audio")
 async def upload_audio(file: UploadFile = File(...)):
 
